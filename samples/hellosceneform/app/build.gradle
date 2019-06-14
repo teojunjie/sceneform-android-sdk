@@ -42,8 +42,10 @@ android {
 dependencies {
 
     // Provides ArFragment, and other Sceneform UX resources:
-    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.9.0"
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.6.0"
 
+    // Provides ability to load 3D models at runtime
+    implementation 'com.google.ar.sceneform:assets:1.6.0'
     // Use the Sceneform UX Package built from the source files included in the sceneformux folder.
     //api project(":sceneformux")
 
@@ -54,9 +56,4 @@ dependencies {
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
-
-sceneform.asset('sampledata/models/andy.obj',
-        'default',
-        'sampledata/models/andy.sfa',
-        'src/main/res/raw/andy')
 
