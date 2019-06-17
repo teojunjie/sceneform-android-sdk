@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class HelloSceneformActivity extends AppCompatActivity {
-  static final String GLB_ASSET =  "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/again.glb";
+  static final String GLB_ASSET =  "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/just_work_i_command_you.glb";
   static final String GLB_TEXTURE1 = "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/texture1.jpeg";
   static final String GLB_TEXTURE2 = "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/texture2.jpeg";
   static final String GLB_TEXTURE3 = "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/texture3.jpeg";
