@@ -20,10 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class HelloSceneformActivity extends AppCompatActivity {
-  static final String GLB_ASSET =  "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/just_work_i_command_you.glb";
-  static final String GLB_TEXTURE1 = "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/texture1.jpeg";
-  static final String GLB_TEXTURE2 = "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/texture2.jpeg";
-  static final String GLB_TEXTURE3 = "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/texture3.jpeg";
+  static final String GLB_ASSET =  "https://models-furnitures.s3-ap-southeast-1.amazonaws.com/Folsom+Street+Concrete+Stool-morning.glb";
   private ArFragment arFragment;
 
 
@@ -42,21 +39,18 @@ public class HelloSceneformActivity extends AppCompatActivity {
   }
 
     private void placeModel(Anchor anchor) {
-
-        CompletableFuture<Texture> modelTexture = Texture.builder().setSource(this, Uri.parse(GLB_TEXTURE3)).setUsage(Texture.Usage.COLOR).build();
-
-        ModelRenderable
+                ModelRenderable
             .builder()
             .setSource(this,
                     RenderableSource
                             .builder()
                             .setSource(this, Uri.parse(GLB_ASSET), RenderableSource.SourceType.GLB)
-                    .setScale(0.01f)  // Scale the original model to 50%.
+                    .setScale(1f)  // Scale the original model to 50%.
                     .setRecenterMode(RenderableSource.RecenterMode.ROOT)
                     .build())
             .setRegistryId(GLB_ASSET)
             .build()
-            .thenAcceptBoth(modelTexture, (renderable, texture) -> addNodeToScene(renderable, anchor, texture))
+            .thenAccept(renderable -> addNodeToScene(renderable, anchor))
             .exceptionally(throwable -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(throwable.getMessage()).show();
@@ -64,7 +58,7 @@ public class HelloSceneformActivity extends AppCompatActivity {
                     });
     }
 
-    private void addNodeToScene(ModelRenderable renderable, Anchor anchor, Texture texture){
+    private void addNodeToScene(ModelRenderable renderable, Anchor anchor){
 //          renderable.getMaterial().setTexture("baseColor" , texture);
 
           AnchorNode anchorNode = new AnchorNode(anchor);
